@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to WheelDeal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .welcome-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .feature h4 {
+            margin: 10px 0;
+            color: #667eea;
+        }
+        .cta-section {
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 5px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #5a6fd8;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+        }
+        .social-links {
+            margin: 20px 0;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="welcome-icon">🚗</div>
+            <h1>Welcome to WheelDeal!</h1>
+            <p>Your journey to premium car rentals starts here</p>
+        </div>
+        
+        <div class="content">
+            <div class="welcome-section">
+                <h2>Hello <strong th:text="${customerName}">there</strong>! 👋</h2>
+                <p>Welcome to WheelDeal Car Rental! We're thrilled to have you as part of our community. Get ready to experience premium car rental services with unmatched convenience and quality.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h4>Quick Booking</h4>
+                    <p>Book your car in minutes with our streamlined process</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⭐</div>
+                    <h4>Premium Fleet</h4>
+                    <p>Choose from our carefully maintained premium vehicles</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Safe & Secure</h4>
+                    <p>All our cars are regularly inspected and fully insured</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h4>24/7 Support</h4>
+                    <p>Our customer support team is always here to help</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3>Ready to Start Your Journey?</h3>
+                <p>Explore our fleet and book your first car rental today!</p>
+                <a href="#" class="btn">Browse Cars</a>
+                <a href="#" class="btn">View Special Offers</a>
+            </div>
+
+            <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                <h4 style="margin-top: 0; color: #856404;">🎁 Special Welcome Offer</h4>
+                <p style="margin-bottom: 0; color: #856404;">As a new member, enjoy 10% off your first booking! Use code <strong>WELCOME10</strong> at checkout.</p>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <h3>Stay Connected</h3>
+                <p>Follow us on social media for the latest updates, special offers, and travel tips!</p>
+                <div class="social-links">
+                    <a href="#">📘 Facebook</a>
+                    <a href="#">📷 Instagram</a>
+                    <a href="#">🐦 Twitter</a>
+                    <a href="#">💼 LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>WheelDeal Car Rental</strong></p>
+            <p>Premium car rental services for your journey</p>
+            
+            <div class="contact-info">
+                <p>📧 support@wheeldeal.com</p>
+                <p>📞 +1 (555) 123-4567</p>
+                <p>🌐 www.wheeldeal.com</p>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 12px; color: #adb5bd;">
+                Thank you for joining WheelDeal Car Rental. We're excited to be part of your journey!
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

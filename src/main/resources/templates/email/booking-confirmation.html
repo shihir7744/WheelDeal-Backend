@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .booking-details {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        .booking-details h3 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #495057;
+        }
+        .detail-value {
+            color: #6c757d;
+        }
+        .total-amount {
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 5px;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background-color: #5a6fd8;
+        }
+        .success-icon {
+            font-size: 48px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎉 Booking Confirmed!</h1>
+            <p>Your car rental booking has been successfully confirmed</p>
+        </div>
+        
+        <div class="content">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div class="success-icon">✅</div>
+                <h2>Thank you for choosing WheelDeal!</h2>
+                <p>Dear <strong th:text="${customerName}">Customer</strong>,</p>
+                <p>Your booking has been confirmed and we're excited to provide you with an excellent car rental experience.</p>
+            </div>
+
+            <div class="booking-details">
+                <h3>📋 Booking Details</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Booking ID:</span>
+                    <span class="detail-value" th:text="${bookingId}">#12345</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Car Details:</span>
+                    <span class="detail-value" th:text="${carDetails}">Toyota Camry 2023</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Rental Period:</span>
+                    <span class="detail-value" th:text="${bookingDates}">Dec 15 - Dec 20, 2024</span>
+                </div>
+            </div>
+
+            <div class="total-amount">
+                Total Amount: <span th:text="${totalAmount}">$500.00</span>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <h3>🚗 What's Next?</h3>
+                <p>Please arrive at the pickup location 15 minutes before your scheduled time with:</p>
+                <ul style="text-align: left; display: inline-block;">
+                    <li>Valid driver's license</li>
+                    <li>Credit card for security deposit</li>
+                    <li>Booking confirmation (this email)</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="#" class="btn">View Booking Details</a>
+                <a href="#" class="btn">Contact Support</a>
+            </div>
+
+            <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                <h4 style="margin-top: 0; color: #856404;">📞 Need Help?</h4>
+                <p style="margin-bottom: 0; color: #856404;">If you have any questions or need to modify your booking, please don't hesitate to contact our customer support team.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>WheelDeal Car Rental</strong></p>
+            <p>Premium car rental services for your journey</p>
+            
+            <div class="contact-info">
+                <p>📧 support@wheeldeal.com</p>
+                <p>📞 +1 (555) 123-4567</p>
+                <p>🌐 www.wheeldeal.com</p>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 12px; color: #adb5bd;">
+                This email was sent to you because you made a booking with WheelDeal Car Rental.
+                If you have any questions, please contact our support team.
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.carrental.backend.CarRentalBackendApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.32 s -- in com.carrental.backend.CarRentalBackendApplicationTests
