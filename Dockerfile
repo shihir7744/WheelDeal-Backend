@@ -1,33 +1,35 @@
-# Use OpenJDK 21 as base image
-FROM openjdk:21-jdk-slim
-
-# Set working directory
+# =========================
+# Stage 1: Build
+# =========================
+FROM maven:3.9.8-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copy pom.xml first for better layer caching
+# Copy pom.xml first (better caching)
 COPY pom.xml .
-
-# Install Maven directly instead of using wrapper
-RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
-
-# Download dependencies
 RUN mvn dependency:go-offline -B
 
-# Copy source code
+# Copy source code and build
 COPY src ./src
-
-# Build the application
 RUN mvn clean package -DskipTests
 
+# =========================
+# Stage 2: Runtime
+# =========================
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+
+# Copy only the built JAR from the build stage
+COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.jar app.jar
+
 # Create uploads directory
-RUN mkdir -p uploads
+RUN mkdir -p /app/uploads
+
+# Environment variables
+ENV SPRING_PROFILES_ACTIVE=prod
+ENV JAVA_OPTS="-Xmx512m -Xms256m"
 
 # Expose port
 EXPOSE 8080
 
-# Set environment variables
-ENV SPRING_PROFILES_ACTIVE=prod
-ENV JAVA_OPTS="-Xmx512m -Xms256m"
-
-# Run the application
-CMD ["java", "-jar", "target/backend-0.0.1-SNAPSHOT.jar"]
+# Run the application with memory limits
+ENTRYPOINT exec java $JAVA_OPTS -jar app.jar
